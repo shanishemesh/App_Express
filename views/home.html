@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block style %}
+<style>
+
+/* The design of the tabs and the presentation of the site's content */
+#home_cover{
+  background-image: url("/assets/cover.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.home_cover_parent_div{
+  height: 500px;
+  width: 100%;
+}
+.home_cover_child_div{
+  height: 250px;
+  width: 100%;
+}
+.edit_btn, .delete_btn{
+  color: #ebe4ff;
+}
+.edit_btn:hover{
+  color: #be54fb !important;
+}
+.delete_btn:hover{
+  color: #7e0d0d !important;
+}
+
+.blue-caption {
+  color: rgb(0, 0, 255);
+}
+
+
+</style>
+{% endblock style %}
+{% block content %}
+
+<!-- The design of the top part of the site -->
+<div id="home_cover">
+<div class="home_cover_parent_div d-flex justify-content-center align-items-center" style="background-color: rgba(0,0,0,0.7);">
+<div class="container col-md-6 mx-auto">
+<div class="home_cover_child_div d-flex justify-content-center align-items-center flex-column text-white px-3 p text-center" style="background-color: rgba(0, 0, 0, 0.467); border-radius: 25px;">
+  
+  <h1>Welcome</h1>
+  <p>On this site you can add an employee card.<br>
+    Personal use: Card on yourself<br>
+    Business use: With the help of the website, you can make tracking cards for employees and thus edit and delete them accordingly.</p>
+  <a href="/add" class="btn btn-outline-default waves-effect btn-rounded btn-sm"><i class="fas fa-plus"></i>  Add New Employee</a>
+</div>
+</div>
+</div>
+</div>
+<div class="container mt-4 pt-5">
+<div class="row">
+
+{% if employee_data.length > 0 %}
+{% for employee in employee_data %}
+<!-- Card design -->
+<div class="col-md-3 mb-5 mt-5">
+  <div class="card testimonial-card">
+    <div class="avatar mx-auto white">
+      <img src="/assets/employee.png" class="rounded-circle img-fluid">
+    </div>
+    <div class="card-body pb-2">
+      <h4 class="font-weight-bold mb-1">{{ employee.name }}</h4>
+
+      <small class="blue-caption">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at" viewBox="0 0 16 16">
+        <path d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2Zm3.708 6.208L1 11.105V5.383l4.708 2.825ZM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2-7-4.2Z"/>
+        <path d="M14.247 14.269c1.01 0 1.587-.857 1.587-2.025v-.21C15.834 10.43 14.64 9 12.52 9h-.035C10.42 9 9 10.36 9 12.432v.214C9 14.82 10.438 16 12.358 16h.044c.594 0 1.018-.074 1.237-.175v-.73c-.245.11-.673.18-1.18.18h-.044c-1.334 0-2.571-.788-2.571-2.655v-.157c0-1.657 1.058-2.724 2.64-2.724h.04c1.535 0 2.484 1.05 2.484 2.326v.118c0 .975-.324 1.39-.639 1.39-.232 0-.41-.148-.41-.42v-2.19h-.906v.569h-.03c-.084-.298-.368-.63-.954-.63-.778 0-1.259.555-1.259 1.4v.528c0 .892.49 1.434 1.26 1.434.471 0 .896-.227 1.014-.643h.043c.118.42.617.648 1.12.648Zm-2.453-1.588v-.227c0-.546.227-.791.573-.791.297 0 .572.192.572.708v.367c0 .573-.253.744-.564.744-.354 0-.581-.215-.581-.8Z"/>
+      </svg> {{ employee.email }}</small>
+
+      <hr class="mb-2">
+      <p class="dark-grey-text mb-2">{{ employee.description }}</p>
+
+      <hr class="my-2 ">
+      <a href="/edit/{{ employee.id }}" class="edit_btn mr-5"><i class="fas fa-user-edit"></i></a>
+      <a href="/delete/{{ employee.id }}" class="delete_btn"><i class="fas fa-user-times"></i></a>
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+{% else %}
+<!-- Error message on user input -->
+<div class="col-12">
+<h1 class="text-muted text-center"><i class="fas fa-user-alt-slash"></i>No employee found!</h1>
+</div>
+{% endif %}
+</div>
+</div>
+{% endblock content %}

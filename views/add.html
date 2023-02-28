@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %} | Add New Employee{% endblock title %}
+{% block content %}
+
+<!-- Design the second browser, when adding a card -->
+<div class="container my-5">
+<div class="row">
+<div class="col-md-9 mx-auto">
+<div class="card card-body">
+<form action="/add" method="POST">
+<div class="row">
+<div class="col-md-6 mb-4 my-3">
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text"><i class="fas fa-user-alt"></i></span>
+  </div>
+
+  <input type="text" name="name" class="form-control" placeholder="Name & Last Name" required>
+</div>
+</div>
+
+<div class="col-md-6 mb-4 my-3">
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+  </div>
+
+  <input type="email" name="email" class="form-control" placeholder="Email" required>
+</div>
+</div>
+
+<div class="col-12 mb-3 my-3">
+<textarea name="description" class="form-control" rows="7" required placeholder="write an description..."></textarea>
+</div>
+
+<div class="col-12 text-center">
+<button type="submit" class="btn btn-outline-success btn-rounded btn-sm">Save</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+{% endblock content %}

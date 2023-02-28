@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %} | Edit{% endblock title %}
+{% block content %}
+
+<!-- The design of the second browser, when you want to edit a card -->
+<div class="container my-5">
+<div class="row">
+<div class="col-md-9 mx-auto">
+<div class="card card-body">
+<form action="/edit" method="POST">
+<div class="row">
+<div class="col-md-6 mb-4 my-3">
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text"><i class="fas fa-user-alt"></i></span>
+  </div>
+
+  <input type="text" name="name" class="form-control" placeholder="Name" value="{{ data.name }}" required>
+</div>
+</div>
+
+<div class="col-md-6 mb-4 my-3">
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+  </div>
+
+  <input type="email" name="email" class="form-control" placeholder="Email" value="{{ data.email }}" required>
+</div>
+</div>
+<div class="col-12 mb-3 my-3">
+<textarea name="description" class="form-control" rows="3" required placeholder="write an description...">{{ data.description }}</textarea>
+</div>
+
+<input type="hidden" name="id" value="{{ data.id }}">
+<div class="col-12 text-center">
+<button type="submit" class="btn btn-outline-primary btn-rounded btn-sm">Save Changes</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+{% endblock content %}
