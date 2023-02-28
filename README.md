@@ -20,7 +20,7 @@ You can enter the details of each employee and their role, you can edit if neces
 required: nodejs v18
 
 #### step 1:
-unzip the `App_Express.zip`.
+unzip the `app_express.zip`.
 
 #### step 2:
 open new terminal or cmd inside your project folder and type this command `npm i` or `npm install` ,it will install all the packages & dependencies.
